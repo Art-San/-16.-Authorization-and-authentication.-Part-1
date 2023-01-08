@@ -1,5 +1,6 @@
 import React from 'react'
 import useMockData from '../utils/mockData'
+
 const Main = () => {
     const { error, initialize, progress, status } = useMockData()
     const handleClick = () => {
@@ -12,9 +13,12 @@ const Main = () => {
             <ul>
                 <li>Status: {status}</li>
                 <li>Progress: {progress}%</li>
-                {error && <li>error: {error}</li>}
+                {error && <li>Error: {error}</li>}
             </ul>
-            <button className="btn btn-primary" onClick={handleClick}>Инициализировать</button>
+            <button className="btn btn-primary" onClick={handleClick}>
+                {' '}
+                Инициализировать
+            </button>
         </div>
     )
 }

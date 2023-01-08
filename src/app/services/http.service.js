@@ -12,7 +12,8 @@ axios.interceptors.request.use(
                 (containSlash ? config.url.slice(0, -1) : config.url) + '.json'
         }
         return config
-    }, function (error) {
+    },
+    function (error) {
         return Promise.reject(error)
     }
 )
@@ -23,7 +24,6 @@ function transformData(data) {
         }))
         : []
 }
-
 axios.interceptors.response.use(
     (res) => {
         if (configFile.isFireBase) {
@@ -39,15 +39,15 @@ axios.interceptors.response.use(
 
         if (!expectedErrors) {
             console.log(error)
-            toast.error('Somthing was wrong. Try it leter')
+            toast.error('Something was wrong. Try it later')
         }
         return Promise.reject(error)
-    })
+    }
+)
 const httpService = {
     get: axios.get,
     post: axios.post,
     put: axios.put,
     delete: axios.delete
 }
-
 export default httpService
