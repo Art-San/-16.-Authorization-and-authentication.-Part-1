@@ -7,6 +7,7 @@ import MultiSelectField from '../common/form/multiSelectField'
 import CheckBoxField from '../common/form/checkBoxField'
 import { useProfessions } from '../../hooks/useProfession'
 import { useQualities } from '../../hooks/useQualities'
+import { useAuth } from '../../hooks/useAuth'
 
 const RegisterForm = () => {
     const [data, setData] = useState({
@@ -17,6 +18,7 @@ const RegisterForm = () => {
         qualities: [],
         licence: false
     })
+    const { singUp } = useAuth()
     const { qualities } = useQualities()
     const qualitiesList = qualities.map((q) => ({
         label: q.name,
@@ -30,34 +32,6 @@ const RegisterForm = () => {
     const [errors, setErrors] = useState({})
     // console.log('qualities', qualities)
     // console.log('professions', professions)
-
-    // useEffect(() => {
-    //     api.professions.fetchAll().then((data) => setProfession(data))
-    //     api.qualities.fetchAll().then((data) => setQualities(data))
-    // }, [])
-
-    // const getProfessionById = (id) => {
-    //     for (const prof of professions) {
-    //         if (prof.value === id) {
-    //             return { _id: prof.value, name: prof.label }
-    //         }
-    //     }
-    // }
-    // const getQualities = (elements) => {
-    //     const qualitiesArray = []
-    //     for (const elem of elements) {
-    //         for (const quality in qualities) {
-    //             if (elem.value === qualities[quality].value) {
-    //                 qualitiesArray.push({
-    //                     _id: qualities[quality].value,
-    //                     name: qualities[quality].label,
-    //                     color: qualities[quality].color
-    //                 })
-    //             }
-    //         }
-    //     }
-    //     return qualitiesArray
-    // }
 
     const handleChange = (target) => {
         setData((prevState) => ({
@@ -119,7 +93,9 @@ const RegisterForm = () => {
             ...data,
             qualities: data.qualities.map(q => q.value)
         }
+
         console.log(newData)
+        singUp(newData)
     }
     return (
         <form onSubmit={handleSubmit}>
