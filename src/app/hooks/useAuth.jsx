@@ -23,7 +23,6 @@ const AuthProvider = ({ children }) => {
                 password,
                 returnSecureToken: true
             })
-            console.log('data', data)
             setTokens(data)
             await createUser({ _id: data.localId, email, ...rest })
         } catch (error) {

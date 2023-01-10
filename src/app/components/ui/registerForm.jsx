@@ -8,8 +8,10 @@ import CheckBoxField from '../common/form/checkBoxField'
 import { useProfessions } from '../../hooks/useProfession'
 import { useQualities } from '../../hooks/useQualities'
 import { useAuth } from '../../hooks/useAuth'
+import { useHistory } from 'react-router-dom'
 
 const RegisterForm = () => {
+    const history = useHistory()
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -96,6 +98,7 @@ const RegisterForm = () => {
 
         try {
             await singUp(newData)
+            history.push('/')
         } catch (error) {
             setErrors(error)
         }
