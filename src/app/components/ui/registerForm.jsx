@@ -6,8 +6,8 @@ import SelectField from '../common/form/selectField'
 import RadioField from '../common/form/radioField'
 import MultiSelectField from '../common/form/multiSelectField'
 import CheckBoxField from '../common/form/checkBoxField'
-import { useProfessions } from '../../hooks/useProfession'
-import { useQualities } from '../../hooks/useQualities'
+import { useProfessions } from '../../hooks/useProfession' // Рефакторинг формы регистрации
+import { useQualities } from '../../hooks/useQualities' // Рефакторинг формы регистрации
 
 const RegisterForm = () => {
     const [data, setData] = useState({
@@ -18,19 +18,19 @@ const RegisterForm = () => {
         qualities: [],
         licence: false
     })
-    const { qualities } = useQualities()
+    const { qualities } = useQualities() // Рефакторинг формы регистрации
     const qualitiesList = qualities.map((q) => ({
+        // Рефакторинг формы регистрации
         label: q.name,
         value: q._id
     }))
-    const { professions } = useProfessions()
+    const { professions } = useProfessions() // Рефакторинг формы регистрации
     const professionsList = professions.map((p) => ({
+        // Рефакторинг формы регистрации
         label: p.name,
         value: p._id
     }))
     const [errors, setErrors] = useState({})
-    // console.log('qualities', qualities)
-    // console.log('professions', professions)
 
     // useEffect(() => {
     //     api.professions.fetchAll().then((data) => setProfession(data))
@@ -134,8 +134,9 @@ const RegisterForm = () => {
         const isValid = validate()
         if (!isValid) return
         const newData = {
+            // Рефакторинг формы регистрации
             ...data,
-            qualities: data.qualities.map(q => q.value)
+            qualities: data.qualities.map((q) => q.value)
         }
         console.log(newData)
     }
