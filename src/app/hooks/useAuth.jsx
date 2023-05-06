@@ -28,7 +28,8 @@ const AuthProvider = ({ children }) => {
             await createUser({ _id: data.localId, email, ...rest })
         } catch (error) {
             errorCatcher(error)
-            const { code, message } = error.response.data.error
+            // Обработка ошибок регистрации
+            const { code, message } = error.response.data.error // Обработка ошибок регистрации
             console.log(code, '|', '|', message)
             if (code === 400) {
                 if (message === 'EMAIL_EXISTS') {
@@ -62,7 +63,9 @@ const AuthProvider = ({ children }) => {
         }
     }, [error])
     return (
-        <AuthContext.Provider value={{ singUp, currentUser }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ singUp, currentUser }}>
+            {children}
+        </AuthContext.Provider>
     )
 }
 

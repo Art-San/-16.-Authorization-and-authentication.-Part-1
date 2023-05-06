@@ -95,9 +95,10 @@ const RegisterForm = () => {
         }
 
         try {
+            // Обработка ошибок регистрации
             await singUp(newData)
         } catch (error) {
-            setErrors(error)
+            setErrors(error) // Обработка ошибок регистрации
         }
     }
     return (
