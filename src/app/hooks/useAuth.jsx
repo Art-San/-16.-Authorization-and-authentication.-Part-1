@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify' // Продолжаем создавать Sign Up
 import axios from 'axios'
 import userService from '../services/user.service'
 
@@ -10,11 +10,13 @@ const AuthContext = React.createContext()
 export const useAuth = () => {
     return useContext(AuthContext)
 }
-const TOKEN_KEY = 'jwt-token'
+
+const TOKEN_KEY = 'jwt-token' // Продолжаем создавать Sign Up
 const REFRESH_KEY = 'jwt-refresh-token'
 const EXPIRES_KEY = 'jwt-expires'
 
 const AuthProvider = ({ children }) => {
+    // Продолжаем создавать Sign Up
     const [currentUser, setUser] = useState({})
     const [error, setError] = useState(null)
     function setTokens({ refreshToken, idToken, expiresIn = 3600 }) {
@@ -24,7 +26,7 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem(EXPIRES_KEY, expiresDate)
     }
     async function singUp({ email, password, ...rest }) {
-        const key = 'AIzaSyBZ7tEUa5PXUm14BMImCqvLqPtFwnwHOko'
+        const key = 'AIzaSyD8irfDM_1iQPNEFA3T_0dy0lsz2R-X-h4'
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`
         try {
             const { data } = await httpAuth.post(url, {
@@ -39,7 +41,7 @@ const AuthProvider = ({ children }) => {
             errorCatcher(error)
         }
     }
-
+    // Продолжаем создавать Sign Up
     async function createUser(data) {
         try {
             const { content } = userService.create(data)
@@ -48,7 +50,7 @@ const AuthProvider = ({ children }) => {
             errorCatcher(error)
         }
     }
-
+    // Продолжаем создавать Sign Up
     function errorCatcher(error) {
         const { message } = error.response.data
         setError(message)
@@ -60,7 +62,9 @@ const AuthProvider = ({ children }) => {
         }
     }, [error])
     return (
-        <AuthContext.Provider value={{ singUp, currentUser }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ singUp, currentUser }}>
+            {children}
+        </AuthContext.Provider>
     )
 }
 
