@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 import configFile from '../config.json'
 
 const http = axios.create({
+    // Создание экземпляров Axios
     baseURL: configFile.apiEndpoint
 })
 
@@ -22,8 +23,8 @@ http.interceptors.request.use(
 function transformData(data) {
     return data
         ? Object.keys(data).map((key) => ({
-            ...data[key]
-        }))
+              ...data[key]
+          }))
         : []
 }
 http.interceptors.response.use(
