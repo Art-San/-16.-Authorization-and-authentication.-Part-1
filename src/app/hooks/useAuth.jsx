@@ -11,7 +11,7 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
     async function singUp({ email, password }) {
-        const key = 'AIzaSyD8irfDM_1iQPNEFA3T_0dy0lsz2R-X-h4'
+        const key = ''
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`
         const { data } = await httpAuth.post(url, {
             // Создание экземпляров Axios (было await axios.post)
