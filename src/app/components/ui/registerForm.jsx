@@ -18,7 +18,7 @@ const RegisterForm = () => {
         qualities: [],
         licence: false
     })
-    const { singUp } = useAuth()
+    const { singUp } = useAuth() // Метод Sign Up (Регистрация)
     const { qualities } = useQualities()
     const qualitiesList = qualities.map((q) => ({
         label: q.name,
@@ -91,11 +91,11 @@ const RegisterForm = () => {
         if (!isValid) return
         const newData = {
             ...data,
-            qualities: data.qualities.map(q => q.value)
+            qualities: data.qualities.map((q) => q.value)
         }
 
         console.log(newData)
-        singUp(newData)
+        singUp(newData) // Метод Sign Up (Регистрация)
     }
     return (
         <form onSubmit={handleSubmit}>
