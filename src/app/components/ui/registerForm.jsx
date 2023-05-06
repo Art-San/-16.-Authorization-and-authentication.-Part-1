@@ -11,7 +11,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { useHistory } from 'react-router-dom'
 
 const RegisterForm = () => {
-    const history = useHistory()
+    const history = useHistory() // Переадресация после регистрации
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -98,7 +98,7 @@ const RegisterForm = () => {
 
         try {
             await singUp(newData)
-            history.push('/')
+            history.push('/') // Переадресация после регистрации
         } catch (error) {
             setErrors(error)
         }
