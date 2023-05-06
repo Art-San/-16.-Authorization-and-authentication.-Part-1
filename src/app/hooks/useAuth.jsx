@@ -20,14 +20,17 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
     const [currentUser, setUser] = useState({})
     const [error, setError] = useState(null)
-
+    // Log_In
     async function logIn({ email, password }) {
         try {
-            const { data } = await httpAuth.post(`accounts:signInWithPassword`, {
-                email,
-                password,
-                returnSecureToken: true
-            })
+            const { data } = await httpAuth.post(
+                `accounts:signInWithPassword`,
+                {
+                    email,
+                    password,
+                    returnSecureToken: true
+                }
+            )
             setTokens(data)
         } catch (error) {
             errorCatcher(error)
@@ -35,14 +38,14 @@ const AuthProvider = ({ children }) => {
             console.log(code, '|', '|', message)
             if (code === 400) {
                 switch (message) {
-                case 'INVALID_PASSWORD':
-                    throw new Error('Email или пароль введены не корректно')
-                case 'EMAIL_NOT_FOUND':
-                    throw new Error('Email не найден')
-                default:
-                    throw new Error(
-                        'Слишком много попыток входа. Попробуйте позже'
-                    )
+                    case 'INVALID_PASSWORD':
+                        throw new Error('Email или пароль введены не корректно')
+                    case 'EMAIL_NOT_FOUND':
+                        throw new Error('Email не найден')
+                    default:
+                        throw new Error(
+                            'Слишком много попыток входа. Попробуйте позже'
+                        )
                 }
             }
         }
@@ -93,7 +96,9 @@ const AuthProvider = ({ children }) => {
         }
     }, [error])
     return (
-        <AuthContext.Provider value={{ singUp, logIn, currentUser }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ singUp, logIn, currentUser }}>
+            {children}
+        </AuthContext.Provider>
     )
 }
 

@@ -11,16 +11,16 @@ const LoginForm = () => {
         password: '',
         stayOn: false
     })
-    const history = useHistory()
+    const history = useHistory() // Log_In
     const { logIn } = useAuth()
     const [errors, setErrors] = useState({})
-    const [enterError, setEnterError] = useState(null)
+    const [enterError, setEnterError] = useState(null) // Log_In
     const handleChange = (target) => {
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
         }))
-        setEnterError(null)
+        setEnterError(null) // Log_In
     }
     const validatorConfig = {
         email: {
@@ -50,7 +50,7 @@ const LoginForm = () => {
         if (!isValid) return
         try {
             await logIn(data)
-            history.push('/')
+            history.push('/') // Log_In
         } catch (error) {
             setEnterError(error.message)
         }
@@ -79,11 +79,11 @@ const LoginForm = () => {
             >
                 Оставаться в системе
             </CheckBoxField>
-            {enterError && <p className='text-danger'>{enterError}</p>}
+            {enterError && <p className="text-danger">{enterError}</p>}
             <button
                 className="btn btn-primary w-100 mx-auto"
                 type="submit"
-                disabled={!isValid || enterError}
+                disabled={!isValid || enterError} // Log_In
             >
                 Submit
             </button>
