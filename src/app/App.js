@@ -7,7 +7,7 @@ import Main from './layouts/main'
 import NavBar from './components/ui/navBar'
 import { ProfessionProvider } from './hooks/useProfession'
 import { QualitiesProvider } from './hooks/useQualities'
-import AuthProvider from './hooks/useAuth'
+import AuthProvider from './hooks/useAuth' // Auth Provider, создали базу, в следующем уроке реализуем метод для входа в систему
 
 function App() {
     return (
