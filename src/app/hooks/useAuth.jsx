@@ -11,7 +11,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
     // Метод Sign Up (Регистрация)
     async function singUp({ email, password }) {
-        const key = 'AIzaSyD8irfDM_1iQPNEFA3T_0dy0lsz2R-X-h4' // в кабинете firebase  шестиренка/Project settings/Web API Key
+        const key = '' // в кабинете firebase  шестиренка/Project settings/Web API Key
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}` // это endpoint из документации firebase
         const { data } = await axios.post(url, {
             email,
