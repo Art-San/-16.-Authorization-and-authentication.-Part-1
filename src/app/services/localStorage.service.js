@@ -1,7 +1,7 @@
 const TOKEN_KEY = 'jwt-token'
 const REFRESH_KEY = 'jwt-refresh-token'
 const EXPIRES_KEY = 'jwt-expires'
-
+// LocalStorage Service
 export function setTokens({ refreshToken, idToken, expiresIn = 3600 }) {
     const expiresDate = new Date().getTime() + expiresIn * 1000
     localStorage.setItem(TOKEN_KEY, idToken)
@@ -23,7 +23,6 @@ const localStorageService = {
     getAccessToken,
     getRefreshToken,
     getTokenExpiresDate
-
 }
 
 export default localStorageService
